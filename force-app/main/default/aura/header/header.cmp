@@ -1,0 +1,3 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+	<img src="{!$Resource.dragon_header}"/>
+</aura:component>

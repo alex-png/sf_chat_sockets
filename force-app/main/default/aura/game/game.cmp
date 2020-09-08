@@ -1,0 +1,73 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="greeting" type="String" default="Hello" access="global" />
+    <aura:attribute name="subject" type="String" default="World" access="global" />
+    <aura:attribute name="name" type="string" access="global" default="" />
+    <aura:attribute name="nameEntered" type="Boolean" access="global" default ="false"/>
+    <aura:attribute name="firstChapter" type="Boolean" access="global" default="true"/>
+    <aura:attribute name="secondChapter" type="Boolean" access="global" default="false"/>
+    <aura:attribute name="secondChapter1" type="Boolean" access="global" default="false"/>
+    <aura:attribute name="secondChapter2" type="Boolean" access="global" default="false"/>
+    <aura:attribute name="death1" type="Boolean" access="global" default="false" />
+    <aura:attribute name="macbook1" type="Boolean" access="global" default="false" />
+    
+    <aura:if isTrue="{!v.nameEntered}">
+        <h1>The tale of {!v.name}, THE DRAGON SLAYER.</h1>
+        
+        <aura:if isTrue="{!v.firstChapter}" >
+            <h1>
+                You drive your pickaxe into the earth. You don't exactly know what for. 
+                All that anyone one knows is that The Beast scrounges the Earth...for something. 
+                Those who resisted were turned to ash, their families impaled on stakes. You look behind you. 
+                There lies a gate with no perimeter.
+            </h1>
+            <h1>The gate is made of stakes.</h1>
+            <lightning:button label="Next" onclick="{!c.handleClick}" name="firstChapter" />
+        </aura:if>
+        
+        <aura:if isTrue="{!v.secondChapter}" >
+            <h1>Your axe meets the earth with a THUNK. You find a treasure chest.</h1>
+            <h1>You open it to find gold overflowing.</h1>
+            <h1>Beside the gold, you find a macbook. You think back to the time you used to work with software.</h1>
+            <h1>Do you:</h1>
+            <lightning:button label="Pocket as much gold to feed your village." onclick="{!c.handleClick}" name="2-1" />
+            <lightning:button label="Stuff the macbook in your bag." onclick="{!c.handleClick}" name="2-2" />           
+        </aura:if>
+        
+        <aura:if isTrue="{!v.secondChapter1}">
+            <h1>The Beast smells the gold from half a world away, and flies into your workcamp. You lookup and see its nostrils breathing life into the fire that roars within.
+            </h1>
+            <h1>What do you do?</h1>
+            <lightning:button label="Throw the gold in the dragons face and run as fast as possible" onclick="{!c.handleClick}" name="death" />
+            <lightning:button label="Attempt to barter with the dragon." onclick="{!c.handleClick}" name="death" />
+        </aura:if>
+        <aura:if isTrue="{!v.secondChapter2}">
+            <h1>
+                The Beast smells the gold from half a world away, and flies into your workcamp. You clear the area where the gold was found. It lands, shaking the Earth, spilling the gold onto the ground.
+            </h1> 
+            <h1>As it delights in the gold, you turn on the Macbook. You run lsof on BASH and realize that there is a Dragon.exe running. What do you do?</h1>
+            <lightning:button label="Grab its PID number and kill it with -f" onclick="{!c.handleClick}" name="macbook"/>
+            <lightning:button label="No clue, I code in HTML." onclick="{!c.handleClick}" name="death"/>
+        </aura:if>
+        <aura:if isTrue="{!v.death1}">
+            <h1>The dragon pops the gold into his mouth and places on you a crown of molten gold. It demands that your family replace the rotting corpses on the stakes below.</h1>            
+                   <h1>You died!</h1>
+
+            <img src="https://www.shortlist.com/media/imager/201905/25422-posts.article_md.jpg"/>
+
+
+        </aura:if>
+        <aura:if isTrue="{!v.macbook1}">
+			<h1>The dragon falls limp. Others start hacking at it with axes, and find machinery under its skin.</h1>
+            <h1>In the clouds above, a great sonic roar is heard. Fleets of UFO's ride down, seemingly to protect their property.</h1>
+            <h1>You have killed the dragon, {!v.name}. Goodluck with the rest.</h1>
+            <img src="https://i.pinimg.com/originals/b1/76/b5/b176b56b573525a087f0260d5ef88a48.png" />
+        </aura:if>        
+        
+        
+        <aura:set attribute="else">
+            <lightning:input type="text" aura:id="nameInput" name="nameInput" label="ENTER NAME:" value="{!v.name}" onchange="{!c.handleChange}" />
+            <lightning:button label="Enter" onclick="{!c.handleClick}" name="inputName" />
+        </aura:set>
+    </aura:if>
+    
+</aura:component>

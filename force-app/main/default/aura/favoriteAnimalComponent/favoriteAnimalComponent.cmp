@@ -1,0 +1,27 @@
+<aura:component controller="HelloWorldController">
+    <aura:attribute name="contacts" type="Contact[]" />
+    
+    <aura:handler name="init" value="{!This}" action="{!c.doInit}" />
+    <aura:iteration items="{!v.contacts}" var="con" >
+        {!con.FirstName} <br />
+        {!con.LastName} <br />
+    </aura:iteration>
+    
+    
+    
+    <div style="width:30%">
+        <lightning:card title="My Favorite Animal">
+            
+            <h1>Animal: Dog</h1>
+            <h2>About:</h2>
+            <p class="slds-p-horizontal_small">
+                There are breeds that have been bred with 
+                physical and phsycological defects.
+                The pitbull of today is far different than
+                one of 50 years ago.
+            </p>
+        </lightning:card>
+    </div>
+    
+    
+</aura:component>

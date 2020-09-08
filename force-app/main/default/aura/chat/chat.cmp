@@ -1,0 +1,18 @@
+<aura:component controller="chatController">
+    <aura:attribute type="String" name="userInput" default="" />
+    <aura:attribute type="List" name="allPosts" />
+    <aura:attribute type="Boolean" name="allPostsCalled" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!v.allPostsCalled}">
+        <aura:iteration items="{!v.allPosts}" var="post">
+            <h1>{!post.Owner.Name}: {!post.body__c} </h1>
+        </aura:iteration>
+    </aura:if>
+    
+    <lightning:input value="{!v.userInput}">
+    </lightning:input>   
+    
+    <lightning:button name="Enter" label="Enter" onclick="{!c.submit}" />
+    
+</aura:component>
